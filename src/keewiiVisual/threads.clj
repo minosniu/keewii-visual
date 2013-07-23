@@ -1,7 +1,7 @@
 (ns keewiiVisual.threads
   (:require [clojure.string :as string])
   (:use [keewiiVisual.udp]
-        [keewiiVisual.vars]))
+        [keewiiVisual.basic_setting]))
  
 ;UDP receving thread
 (def agent-udp (agent nil))

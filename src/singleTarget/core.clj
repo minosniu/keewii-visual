@@ -3,7 +3,7 @@
             [clojure.java.io :as io]
             [singleTarget.initializing :as init]
             [singleTarget.saveData :as saveData])
-  (:use [keewiiVisual.vars] 
+  (:use [keewiiVisual.basic_setting] 
         [keewiiVisual.vowelList]
         [keewiiVisual.toolbox]
         [singleTarget.displayGui]

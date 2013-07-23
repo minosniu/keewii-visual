@@ -1,6 +1,6 @@
 (ns free.core
   (:require [clojure.string :as string])
-  (:use [keewiiVisual.vars]
+  (:use [keewiiVisual.basic_setting]
         [keewiiVisual.threads]
         [keewiiVisual.toolbox :only [def-keewii quit KTH-operator]] 
         [free.displayGui] 
