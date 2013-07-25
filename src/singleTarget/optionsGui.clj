@@ -15,7 +15,9 @@
     (doto Name b/when-focused-select-all)  
     (doto frame
       (.setLocation 500 300) 
-      (.setSize 400 300))
+      (.setSize 400 300)
+      (.setAlwaysOnTop true))
+    
     (listen Submit
             :action (fn [e] (doseq [] 
                               (.dispose frame)

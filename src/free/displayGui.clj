@@ -1,6 +1,6 @@
 (ns free.displayGui
   (:require [clojure.string :as string])
-  (:use [keewiiVisual.vars] 
+  (:use [keewiiVisual.basic_setting] 
         [keewiiVisual.toolbox]
         [keewiiVisual.vowelList]
         [seesaw.color]))
