@@ -15,10 +15,7 @@
           EMG2 (last msg)]
       (reset! F1 (first msg))
       (reset! F2 (second msg))
-      ;(reset! EMG1 (second (rest msg)))
-      ;(reset! EMG2 (last msg))
-      (save-temp-data time EMG1 EMG2 @loop-count)))
-  ); vowel-showed cursor-f1 cursor-f2
+      (save-temp-data time EMG1 EMG2 @loop-count)))); vowel-showed cursor-f1 cursor-f2
 (defn udp-reception [x]       
   (when @running
     (udp-receive)
