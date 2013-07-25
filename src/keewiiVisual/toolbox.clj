@@ -1,5 +1,5 @@
 (ns keewiiVisual.toolbox
-  (:use  [keewiiVisual.vars]
+  (:use  [keewiiVisual.basic_setting]
          [seesaw.core :only [config! pack! show! invoke-now full-screen! listen]]) 
   (:require [clojure.string :as string]
             [clojure.java.io :as io]
