@@ -43,7 +43,8 @@
 ;; Main loop KTH + data logging
 (doseq [i (range  (- (@all-options :start-trial) 1) total-trials)]
   (while (not @running)) 
-  (let [session-number (+ i 1)
+  (reset! loop-count (+ i 1)) 
+  (let [session-number @loop-count
         temp-path (str (cur_dir) "\\temp\\")
         recording-info (saveData/save-temp-wav sox-path temp-path session-number)
         data-path (init/datapath @all-options)]
@@ -52,8 +53,7 @@
     (sox-recorder recording-info) ;sound recorder on
     (KTH-operator true) ;KTH synthesizer on
     (reset! alphabet (init/randomized-sequence i)) ;change alphabet
-     ;It saves the right answer
-    (saveData/save-temp-data temp-path session-number)
+    (saveData/save-temp-seq temp-path session-number) ; save current alphabet (right answer)
     (Thread/sleep  trial-duration)
     (KTH-operator false)
     (reset! CUR_TGT_sleep false) 

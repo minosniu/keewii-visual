@@ -27,9 +27,7 @@
 (def Time (atom (now)))
 (def F1 (atom 210)) 
 (def F2 (atom 510))
-(def F3 (atom 2890)) 
-(def EMG1 (atom 0.0))
-(def EMG2 (atom 0.0))
+(def loop-count (atom 0)) 
 ;thread running?
 (def running (atom true))
 ;pause 

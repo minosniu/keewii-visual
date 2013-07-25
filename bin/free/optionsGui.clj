@@ -9,7 +9,8 @@
     
     (doto frame
       (.setLocation 500 300) 
-      (.setSize 400 120)) 
+      (.setSize 400 120)
+      (.setAlwaysOnTop true)) 
     (listen Submit
             :action (fn [e] (doseq [] (.dispose frame)
                               (deliver promise-a-choice {:is-polar (case (.getSelectedIndex coordinates)
