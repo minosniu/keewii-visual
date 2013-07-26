@@ -1,6 +1,6 @@
 (ns keewiiVisual.toolbox
   (:use  [keewiiVisual.basic_setting]
-         [seesaw.core :only [config! pack! show! invoke-now full-screen! listen]]) 
+         [seesaw.core :only [config! pack! show! invoke-now full-screen! listen timer repaint!]]) 
   (:require [clojure.string :as string]
             [clojure.java.io :as io]
             [keewiiVisual.vowelList :as vowelList]))
@@ -43,7 +43,9 @@
   `(do
      (defn ~'run [on-close# & args#]
        (let [~arg-vec args#
-             f# (invoke-now ~@body)]
+             f# (invoke-now ~@body)
+             cvs# (.getContentPane f#)
+             t# (timer (fn [e#] (repaint! cvs#)) :delay re-drawing-sleep-ms)]
          (config! f# :on-close on-close#)
          (when (= (java.awt.Dimension.) (.getSize f#))
            (pack! f#))
