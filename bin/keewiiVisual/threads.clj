@@ -4,6 +4,13 @@
         [keewiiVisual.basic_setting]
         [singleTarget.saveData :only (save-temp-data)]))
  
+; (def agent-drawing (agent nil))
+; (defn re-drawing [x]
+;  (when true;@running
+;     (send-off *agent* #'re-drawing))
+;   (.repaint panel)
+;   (Thread/sleep re-drawing-sleep-ms) nil) ;also need to define panel
+ 
 ;UDP receving thread
 (def agent-udp (agent nil))
 (defn udp-receive []
