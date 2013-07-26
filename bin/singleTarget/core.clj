@@ -23,8 +23,7 @@
 ;; GUI for experiment & fre-exploration
 (def-keewii []
   (let [painter (partial render-vowel-map @all-options )
-        cvs (canvas :id :canvas :background "#BBBBBB" :paint painter)
-        t (timer (fn [e] (repaint! cvs)) :delay re-drawing-sleep-ms)]
+        cvs (canvas :id :canvas :background "#BBBBBB" :paint painter)]
     (frame 
       :title "Experiment" 
       :width (dim 0) :height (dim 1)

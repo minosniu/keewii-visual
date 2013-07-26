@@ -4,6 +4,13 @@
         [keewiiVisual.basic_setting]
         [singleTarget.saveData :only (save-temp-data)]))
  
+; (def agent-drawing (agent nil))
+; (defn re-drawing [x]
+;  (when true;@running
+;     (send-off *agent* #'re-drawing))
+;   (.repaint panel)
+;   (Thread/sleep re-drawing-sleep-ms) nil) ;also need to define panel
+ 
 ;UDP receving thread
 (def agent-udp (agent nil))
 (defn udp-receive []
@@ -15,10 +22,7 @@
           EMG2 (last msg)]
       (reset! F1 (first msg))
       (reset! F2 (second msg))
-      ;(reset! EMG1 (second (rest msg)))
-      ;(reset! EMG2 (last msg))
-      (save-temp-data time EMG1 EMG2 @loop-count)))
-  ); vowel-showed cursor-f1 cursor-f2
+      (save-temp-data time EMG1 EMG2 @loop-count)))); vowel-showed cursor-f1 cursor-f2
 (defn udp-reception [x]       
   (when @running
     (udp-receive)
