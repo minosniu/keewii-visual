@@ -33,11 +33,20 @@
           (. setFont Font)
           (.setColor (color :black))
           (.drawString CHAR x_pos y_pos)))
-      (doto bg ; interval / relax status
-        (.setFont Font)
-        (.setColor (color :black))
-        (.drawString (R :name) 
-          (formant2pixel R WIDTH 2);1700 = actual position
-          (formant2pixel R HEIGHT 1)))) 
+      
+      (if @running 
+        (doto bg ; interval / relax status
+          (.setFont Font)
+          (.setColor (color :black))      
+          (.drawString (R :name) 
+            (formant2pixel R WIDTH 2);1700 = actual position
+            (formant2pixel R HEIGHT 1)))
+        (doto bg ; interval / relax status
+          (.setFont Font)
+          (.setColor (color :red))      
+          (.drawString (P :name) 
+            (formant2pixel P WIDTH 2);1700 = actual position
+            (formant2pixel P HEIGHT 1)))
+        )) 
     (.drawImage g img 0 0 nil)
     (.dispose bg)))

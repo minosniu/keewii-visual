@@ -10,6 +10,7 @@
 ;instruction
 (def S (struct vowel "Test will start soon" 430 2150))
 (def R (struct vowel "Relax" 430 1750))
+(def P (struct vowel "Pause" 430 1750)) 
 
 ;temp memory
 (def alphabet (atom S))
