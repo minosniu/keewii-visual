@@ -32,7 +32,7 @@
 ;;GUI functions
 (defn key-parser [ch]
   "key-listener for pause, and future use of others" 
-  (when (= (str ch) "p") 
+  (when (or (= (str ch) "P") (= (str ch) "p")) 
     (doseq [] (println "Pause: " @running) 
       (swap! running not)))) ;pause
 (defmacro def-keewii
