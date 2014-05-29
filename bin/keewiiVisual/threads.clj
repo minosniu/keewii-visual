@@ -22,11 +22,13 @@
           EMG2 (last msg)]
       (reset! F1 (first msg))
       (reset! F2 (second msg))
+      ;(println @F1 @F2 "\n")
       (save-temp-data time EMG1 EMG2 @loop-count)))); vowel-showed cursor-f1 cursor-f2
 (defn udp-reception [x]       
-  (when @running
     (udp-receive)
     (send-off *agent* #'udp-reception) 
-    nil))
+  )
+
+
    ; vowel-showed cursor-f1 cursor-f2
   

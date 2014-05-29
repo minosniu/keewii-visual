@@ -13,7 +13,7 @@
   (create-options-gui all-options)
   @all-options)
 
-;; GUI for experiment & fre-exploration
+;; GUI for experiment & free-exploration
 (def-keewii []
   (let [painter (partial render-vowel-map @all-options )
         cvs (canvas :id :canvas :background "#BBBBBB" :paint painter)
