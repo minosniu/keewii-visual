@@ -13,11 +13,12 @@
         [keewiiVisual.threads]
         [seesaw.core]))
 ;; manual setting
-(def cur-sub (str (cur_dir) "\\data\\JAB"))
+(def cur-sub (str (cur_dir) "\\data\\constest"))
 (def dir-cart (str cur-sub "\\Cart\\dat\\") )
 (def dir-polar (str cur-sub "\\Polar\\dat\\"))
 (def sample_time 31.25) ; 160 signals in 5 sec
 (def send-msg (udp/make-send "localhost" 9002))
+;(def wav-info (promise))
 
 (defn lazyseq2vec [LazySeq]
   "This function convert a lazy sequence to a vector "
@@ -36,7 +37,8 @@
   (for [formant-line wavdata-info]  
    (let [single-line (string/split formant-line #"\s")
          msg (str (single-line 3) ":" (single-line 4) ":" (single-line 1) ":" (single-line 2))]
-   ;(println msg) 
+;   (println msg) 
+;   (println wav-info) 
    (send-msg msg)
    (Thread/sleep sample_time))))
 ;(defn wavdata2udp [wavdata-info]
@@ -49,8 +51,15 @@
 (def filelist-polar (lazyseq2vec (ListFiles dir-polar)))
 
 (send-off agent-udp udp-reception)
-(Thread/sleep Delayed-start);Starting pause
 
+;(def agent-fn (agent nil))
+;(defn fn-reception [wav-info]
+;  (wavdata2udp wav-info);() ;function
+;  (send-off *agent* #'fn-reception))
+;(send-off agent-fn fn-reception)
+
+;(Thread/sleep Delayed-start);Starting pause
+;
 ;(doseq [i (range  0 total-trials)]
 ;  (reset! loop-count (+ i 1))
 ;  (let [session-number @loop-count
@@ -66,7 +75,9 @@
 ;    (doseq [] (reset! CUR_TGT_sleep true) (reset! Time (now)))
 ;    (sox-recorder recording-info-cart)
 ;    (KTH-operator true)
-;    ;(wavdata2udp wavdata-info-cart); send udp
+;    
+;    (deliver wav-info wavdata-info-cart)
+;    (wavdata2udp wav-info); send udp
 ;
 ;    
 ;    (Thread/sleep  trial-duration)
@@ -75,4 +86,4 @@
 ;    (Thread/sleep 2000)
 ;    ))
 
-;(wavdata2udp (formant-data-load (str dir-cart (filelist-cart 1))))
+;(wavdata2udp (formant-data-load (str dir-cart (filelist-cart 0))))
